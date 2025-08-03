@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, <span id="internName">Full Stack Intern!</span></h2>
+    <p>Referral Code:Fauna@2005 <strong id="referralCode"></strong></p>
+    <p>Total Donations Raised: ₹25000<strong id="donationAmount"></strong></p>
+
+    <h3>🎯 Rewards / Unlockables:</h3>
+    <ul>
+      <li>🎁 T-shirt — unlocked at ₹5,000+</li>
+      <li>🏅 Badge — unlocked at ₹10,000+</li>
+      <li>📜 Certificate — unlocked at ₹10,000+</li>
+    </ul>
+  </div>
+
+  <script>
+    // Fetch data from backend API
+    fetch("http://localhost:3000/api/intern")
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById("internName").innerText = data.name;
+        document.getElementById("referralCode").innerText = data.referralCode;
+        document.getElementById("donationAmount").innerText = data.totalDonations;
+      })
+      .catch((err) => console.error("Error fetching intern
